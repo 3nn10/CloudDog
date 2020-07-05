@@ -1,0 +1,20 @@
+<!--
+  - this is a subset of rule from https://github.com/wazuh/wazuh-ruleset/blob/master/rules/0245-web_rules.xml plus there are some other
+  -  This program is a free software; you can redistribute it and/or modify it under the terms of GPLv2.
+-->
+SQL Injection Attempt (type 1);;;SQL Injection;;;=select%20|select\+|insert%20|%20from%20|%20where%20|union%20;;;high
+SQL Injection Attempt (type 2);;;SQL Injection;;;union\+|where\+|null,null|xp_cmdshell;;;high
+SQL Injection Attempt (type 3);;;SQL Injection;;;=%27|select%2B|insert%2B|%2Bfrom%2B|%2Bwhere%2B|%2Bunion%2B;;;high
+SQL Injection Attempt (type 4);;;SQL Injection;;;%EF%BC%87|%EF%BC%87|%EF%BC%87|%2531|%u0053%u0045;;;high
+XSS attempt (type 1);;;XSS;;;%3Cscript|%3C%2Fscript|script>|script%3E|SRC=javascript|IMG%20;;;high
+XSS attempt (type 2);;;XSS;;;%20ONLOAD=|INPUT%20|iframe%20;;;high
+Code Injection;;;Common web attack;;;%00|system\(|eval\(;;;high
+Common web attack (type 1);;;Common web attack;;;cmd.exe|root.exe|_mem_bin|msadc|/winnt/|/boot.ini;;;high
+Common web attack (type 2);;;Common web attack;;;/x90/|default.ida|/sumthin|nsiislog.dll|chmod%|wget%|cd%20;;;high
+Common web attack (type 3);;;Common web attack;;;exec%20|../..//|%5C../%5C|././././|2e%2e%5c%2e|\x5C\x5C;;;high
+PHP CGI-bin vulnerability attempt;;;Common web attack;;;\?-d|\?-s|\?-a|\?-b|\?-w;;;high
+MSSQL Injection attempt;;;Common web attack;;;%2Bchar\(\d+\)%2Bchar\(\d+\)%2Bchar\(\d+\)%2Bchar\(\d+\)%2Bchar\(\d+\)%2Bchar\(\d+\);;;high
+Shellshock attack (CVE-2014-6271);;;Common web attack;;;\"\(\)\s*{\s*\w*:;\s*}\s*;|\"\(\)\s*{\s*\w*;\s*}\s*;;;;high
+Shellshock attack (CVE-2014-6278);;;Common web attack;;;\"\(\)\s*{\s*_;\.*}\s*>_[\$\(\$\(\)\)]\s*;;;high
+execution of shell commands and script interpreters;;;Common web attack;;;\sbash\s|\schmod\s|\sdir\s|\schown\s|\senv\s|\sexport\s|\sftp\s|\spwd\s|\snc\s|\sls\s|\sid\s|\scat\s|\sgcc\s|\sg\+\+\s|\sperl\s|\spagefile\s|\spython\s|\sruby\s|\snetstat\s|\suname\s|\secho\s|\sping\s;;;high
+Common web attack (type 4);;;Common web attack;;;%027|%00|%01|%7f|%2E%2E|%0A|%0D|../..|..\..|echo;;;high
