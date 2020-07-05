@@ -47,7 +47,7 @@ linux_authorization_log:
   block:
     active: True            # If you want to block ip are doing ssh bruteforce
     only_successeful: False # True to block only the ip that made a bruteforce and after made a successeful login, False to block every ip made a bruteforce
-    dedicated_nacl_RuleNumber_min: 10 # number of rules that can be used to block Ip, when the dedicated_nacl_number_max is reached the rules will be reused. # this means that the script is able to block maximum (dedicated_nacl_number_max - dedicated_nacl_number_max) ip for every time windows
+    dedicated_nacl_RuleNumber_min: 10 # number of rules that can be used to block Ip, when the dedicated_nacl_number_max is reached the rules will be reused.
     dedicated_nacl_RuleNumber_max: 18
 
 ###Suspicious commands protection###
@@ -57,13 +57,11 @@ linux_bash_command_history:      # make this command in all linux ec2 monitored 
   time_window: 10                # Insert the window time to check in minutes, if you modify this value after install you have to modify also the crontab
   egressDomainWhitelist:         # whitelist for contacted ip with wget, curl, nc, netcat, Lync, nmap
     # - google.com
-    # - example2.com
   ipWhitelist:            # whitelist for contacted ip with wget, curl, nc, netcat, Lync, nmap
-    # - 1.1.1.1/32
-    # - 2.2.2.2/32
-    # - 111.111.111.0/24
+    # - 8.8.8.8/32
+    
   block:
     active: True            # If you want to block ip in egress nacl
     only_ip: False           # True to block only ip that are written directly and not resolved domain
-    dedicated_nacl_RuleNumber_min: 1  # number of rules that can be used to block Ip, when the dedicated_nacl_number_max is reached the rules will be reused. # this means that the script is able to block maximum (dedicated_nacl_number_max - dedicated_nacl_number_max) ip for every time windows
+    dedicated_nacl_RuleNumber_min: 1  # number of rules that can be used to block Ip, when the dedicated_nacl_number_max is reached the rules will be reused.
     dedicated_nacl_RuleNumber_max: 18
