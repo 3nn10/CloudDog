@@ -5,7 +5,7 @@ Keywords: AWS, IPS, IDS, HIPS, HIDS, Cloud
 
 # INDEX
   1) requirements for cloudDog's ec2
-  2) Ec2 minimum Role
+  2) Ec2 minimum IAM Role
   3) Set the crontab
   4) send logs to CloudWatch from monitored EC2s (Cloud Watch Agent)
   5) send alerts to CloudWatch from CloudDog
@@ -21,7 +21,7 @@ Keywords: AWS, IPS, IDS, HIPS, HIDS, Cloud
 		- netaddr: pip3 install netaddr
 		- pid: pip3 install pid
 
-# 2) Ec2 minimum Role
+# 2) Ec2 minimum IAM Role
   - create an ec2 iam role with the following permission policy to attach to the EC2 where CloudDog is Running
     - CloudWatchAgentServerPolicy (AWS managed policy)
     - CloudWatchLogsReadOnlyAccess (AWS managed policy)
