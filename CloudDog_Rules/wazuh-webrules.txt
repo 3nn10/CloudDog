@@ -1,5 +1,5 @@
 <!--
-  - this is a subset of rule from https://github.com/wazuh/wazuh-ruleset/blob/master/rules/0245-web_rules.xml plus there are some other
+  - mostly of the rules are from https://github.com/wazuh/wazuh-ruleset/blob/master/rules/0245-web_rules.xml plus there are some other
   -  This program is a free software; you can redistribute it and/or modify it under the terms of GPLv2.
 -->
 SQL Injection Attempt (type 1);;;SQL Injection;;;=select%20|select\+|insert%20|%20from%20|%20where%20|union%20;;;high
