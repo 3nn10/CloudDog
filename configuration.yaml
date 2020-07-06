@@ -32,7 +32,7 @@ apache_nginx_log:
     active: True                 # if you want block attackers from the ec2, it is better to block with lambda rules.
     treshold_Total_Attacks: 10   # number of total attacks before an Ip is blocked
     treshold_Different_Attack: 3 # number of different attacks before an Ip is blocked
-    treshold_operator: and       # put 'and' if both treshold_Total_Attacks treshold_Different_Attack must be satisfied to block an ip, put 'or' if one condition is enough
+    treshold_operator: or       # put 'and' if both treshold_Total_Attacks treshold_Different_Attack must be satisfied to block an ip, put 'or' if one condition is enough
     dedicated_nacl_RuleNumber_min: 1 # number of rules that can be used to block Ip, when the dedicated_nacl_number_max is reached the rules will be reused. # this means that the script is able to block maximum (dedicated_nacl_number_max - dedicated_nacl_number_max) ip for every time windows
     dedicated_nacl_RuleNumber_max: 9
 
