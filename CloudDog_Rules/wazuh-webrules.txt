@@ -17,4 +17,4 @@ MSSQL Injection attempt;;;Common web attack;;;%2Bchar\(\d+\)%2Bchar\(\d+\)%2Bcha
 Shellshock attack (CVE-2014-6271);;;Common web attack;;;\"\(\)\s*{\s*\w*:;\s*}\s*;|\"\(\)\s*{\s*\w*;\s*}\s*;;;;high
 Shellshock attack (CVE-2014-6278);;;Common web attack;;;\"\(\)\s*{\s*_;\.*}\s*>_[\$\(\$\(\)\)]\s*;;;high
 execution of shell commands and script interpreters;;;Common web attack;;;\\bbash\\b|\\bchmod\\b|\\bdir\\b|\\bchown\\b|\\benv\\b|\\bexport\\b|\\bftp\\b|\\bpwd\\b|\\bnc\\b|\\bls\\b|\\bid\\b|\\bcat\\b|\\bgcc\\b|\\bg\+\+\\b|\\bperl\\b|\\bpagefile\\b|\\bpython\\b|\\bruby\\b|\\bnetstat\\b|\\buname\\b|\\becho\\b|\\bping\\b;;;high
-path traversal;;;Common web attack;;;\.\./|\.\.\\;;;high
+path traversal;;;Common web attack;;;\S+=.+?(\.\./|\.\.\\);;;high
