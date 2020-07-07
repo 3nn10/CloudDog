@@ -49,13 +49,13 @@ Keywords: AWS, IPS, IDS, HIPS, HIDS, Cloud
   - set the crontab according to the time_window setted in the configuration.yaml file
   - for web server protection:
     - set the scheduling according to apache_nginx_log:time_window, in this example every 5 minutes
-      */5 * * * * cd /path_to_CloudWatch/ && /usr/bin/python3 cloudDog_Webserver_Protection.py
+      */5 * * * * cd /path_to_CloudDog/ && /usr/bin/python3 cloudDog_Webserver_Protection.py
   - for SSH bruteforce and Privesc
     - set the scheduling according to linux_authorization_log:time_window, in this example every 10 minutes
-      */5 * * * * cd /path_to_CloudWatch/ && /usr/bin/python3 cloudDog_SSH_Bruteforce_Privesc.py
+      */5 * * * * cd /path_to_CloudDog/ && /usr/bin/python3 cloudDog_SSH_Bruteforce_Privesc.py
   - for protection against lateral movement and exfiltration
       set the scheduling according to linux_bash_command_history:time_window, in this example every 10 minutes
-      */10 * * * * cd /path_to_CloudWatch/ && /usr/bin/python3 cloudDog_Bash_Commands.py
+      */10 * * * * cd /path_to_CloudDog/ && /usr/bin/python3 cloudDog_Bash_Commands.py
 
 # 4) send logs to CloudWatch from monitored EC2s (CloudWatch Agent)
   - install cloud watch agent on linux EC2 to monitor (for automation is advised system manager).
@@ -72,11 +72,11 @@ Keywords: AWS, IPS, IDS, HIPS, HIDS, Cloud
   - install cloud watch agent on linux EC2 to monitor (for automation is advised system manager).
     - Link to the guide to install cloud watch agent: https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/install-CloudWatch-Agent-commandline-fleet.html
     - logs to send are:
-      - /path_to_CloudWatch/results/SSH_Bruteforce.log (information about IP that performed SSH BruteForce Attacks)
-      - /path_to_CloudWatch/results/Successfull_SSH_Bruteforce.log (information about IP that performed SSH BruteForce Attacks in the past and made a successeful login)
-      - /path_to_CloudWatch/results/FailedSudo.log (information about commands performed without the right permissions)
-      - /path_to_CloudWatch/results/WebServers_attacks.log (information about attacks perormed agains web servers)
-      - /path_to_CloudWatch/results/Bash_Command.log (information about commands usually linked to attacks to not whitelisted domains/IPs)
+      - /path_to_CloudDog/results/SSH_Bruteforce.log (information about IP that performed SSH BruteForce Attacks)
+      - /path_to_CloudDog/results/Successfull_SSH_Bruteforce.log (information about IP that performed SSH BruteForce Attacks in the past and made a successeful login)
+      - /path_to_CloudDog/results/FailedSudo.log (information about commands performed without the right permissions)
+      - /path_to_CloudDog/results/WebServers_attacks.log (information about attacks perormed agains web servers)
+      - /path_to_CloudDog/results/Bash_Command.log (information about commands usually linked to attacks to not whitelisted domains/IPs)
   - remember to rotate logs
 # 6) error logs
-  - failure of scripts are logged in /path_to_CloudWatch/logs/
+  - failure of scripts are logged in /path_to_CloudDog/logs/
