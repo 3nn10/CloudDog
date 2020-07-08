@@ -12,14 +12,14 @@ Today:
 Keywords: AWS, IPS, IDS, HIPS, HIDS, Cloud
 
 # INDEX
-  1) requirements for CloudDog's ec2
+  1) requirements for CloudDog's EC2
   2) Ec2 minimum IAM Role
   3) Set the crontab
   4) send logs to CloudWatch from monitored EC2s (Cloud Watch Agent)
   5) send alerts to CloudWatch from CloudDog
   6) error logs
 
-# 1) requirements for CloudDog's ec2
+# 1) requirements for CloudDog's EC2
   - Linux (tested on Ubuntu 18.04)
   - EC2 instance type: it depends on how many events are generated, if the IP block is active you will need less resources.
   - CloudWatch agent
@@ -28,9 +28,11 @@ Keywords: AWS, IPS, IDS, HIPS, HIDS, Cloud
 		- boto3: pip3 install boto3
 		- netaddr: pip3 install netaddr
 		- pid: pip3 install pid
+  - Don't expose the EC2 on the Internet, dedicate a vlan for the EC2 in a way it is completley isolated.
+  - keep the EC2 updated
 
 # 2) Ec2 minimum IAM Role
-  - create an ec2 iam role with the following permission policy to attach to the EC2 where CloudDog is Running
+  - create an EC2 iam role with the following permission policy to attach to the EC2 where CloudDog is Running:
     - CloudWatchAgentServerPolicy (AWS managed policy)
     - CloudWatchLogsReadOnlyAccess (AWS managed policy)
     - CloudDog_NACL (Managed policy)
