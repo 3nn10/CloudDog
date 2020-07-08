@@ -101,6 +101,3 @@ try:
 except Exception as e:
     logging.warning("service failed")
     print (e)
-
-
-#PROMPT_COMMAND='history -a' come aggiornare lhistory .bashrc
