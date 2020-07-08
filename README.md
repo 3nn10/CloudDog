@@ -12,14 +12,14 @@ Today:
 Keywords: AWS, IPS, IDS, HIPS, HIDS, Cloud
 
 # INDEX
-  1) requirements for cloudDog's ec2
+  1) requirements for CloudDog's ec2
   2) Ec2 minimum IAM Role
   3) Set the crontab
   4) send logs to CloudWatch from monitored EC2s (Cloud Watch Agent)
   5) send alerts to CloudWatch from CloudDog
   6) error logs
 
-# 1) requirements for cloudDog's ec2
+# 1) requirements for CloudDog's ec2
   - Linux (tested on Ubuntu 18.04)
   - EC2 instance type: it depends on how many events are generated, if the IP block is active you will need less resources.
   - CloudWatch agent
