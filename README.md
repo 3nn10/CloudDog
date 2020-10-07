@@ -9,7 +9,7 @@ Today:
     - privilege escalation alerting on commands started without right permissions (only from linux EC2)
   The blocks are in VPC NACL, so attacks from the same NACL are not effectively protected.
 
-Keywords: AWS, IPS, IDS, HIPS, HIDS, Cloud
+Keywords: AWS, IPS, IDS, HIPS, HIDS, Cloud, Intrusion Detection, Intrusion Prevention, Anomaly Detection, Siem, Event Correlator, Centralized Host Intrusion Detection, Centralized Host Intrusion Prevention, WAF, Web Application Firewall, block based on events, block of dangerous linux command, bruteforce protection, OWASP protection.
 
 # INDEX
   1) requirements for CloudDog's EC2
