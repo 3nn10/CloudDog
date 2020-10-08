@@ -1,5 +1,5 @@
 # CloudDog
-The purpose of CloudDog is to improve detection and remediation capabilities of AWS. CloudDog doesn't substitute any AWS security tool or best practices, but it is a centralized HIPS using CloudWatch and VPC NACL.
+The purpose of CloudDog is to improve detection and remediation capabilities of AWS. It is a centralized HIPS/WAF using CloudWatch and VPC NACL.
 
 Today:
   CloudDog protects ec2s from:
@@ -7,7 +7,7 @@ Today:
     - SSH Bruteforce (only from linux EC2)
     - contacting unwanted domains, IPs (only from linux EC2)
     - privilege escalation alerting on commands started without right permissions (only from linux EC2)
-  The blocks are in VPC NACL, so attacks from the same NACL are not effectively protected.
+  The blocks are in VPC NACL, so it is aimed to give protection from external attackers.
 
 Keywords: AWS, IPS, IDS, HIPS, HIDS, Cloud, Intrusion Detection, Intrusion Prevention, Anomaly Detection, Siem, Event Correlator, Centralized Host Intrusion Detection, Centralized Host Intrusion Prevention, WAF, Web Application Firewall, block based on events, block of dangerous linux command, bruteforce protection, OWASP protection.
 
@@ -90,3 +90,5 @@ Keywords: AWS, IPS, IDS, HIPS, HIDS, Cloud, Intrusion Detection, Intrusion Preve
   - remember to rotate logs
 # 6) error logs
   - failure of scripts are logged in /path_to_CloudDog/logs/
+  
+Feel free to contact me: int3rnetw4tcher@gmail.com
