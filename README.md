@@ -92,4 +92,3 @@ Keywords: AWS, IPS, IDS, HIPS, HIDS, Cloud, Intrusion Detection, Intrusion Preve
 # 6) error logs
   - failure of scripts are logged in /path_to_CloudDog/logs/
   
-Feel free to contact me: int3rnetw4tcher@gmail.com
