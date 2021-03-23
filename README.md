@@ -1,14 +1,14 @@
 # CloudDog
-It is a centralized HIPS/WAF/EDR using CloudWatch and VPC NACL.
+It is a centralized HIPS/WAF/EDR based on AWS CloudWatch and VPC NACL.
 The prevention mode is used only for EC2 hosted on AWS, but the detection feature could be used also for linux not hosted on AWS.
 
 Today:
   CloudDog protects ec2s from:
     - Web Attacks against application exposed with apache2, Nginx, HTTP server
-    - SSH Bruteforce (only from linux EC2)
-    - contacting unwanted domains, IPs (only from linux EC2)
-    - privilege escalation alerting on commands started without right permissions (only from linux EC2)
-  The blocks are in VPC NACL, so it is aimed to give protection from external attackers.
+    - SSH Bruteforce (only Linux)
+    - contacting unwanted domains, IPs (only Linux)
+    - privilege escalation alerting on commands started without right permissions (only Linux)
+  The blocks are in VPC NACL, so it is aimed to give protection on AWS from external attackers.
 
 Keywords: AWS, IPS, IDS, HIPS, HIDS, Cloud, Intrusion Detection, Intrusion Prevention, Anomaly Detection, Siem, Event Correlator, Centralized Host Intrusion Detection, Centralized Host Intrusion Prevention, WAF, Web Application Firewall, block based on events, block of dangerous linux command, bruteforce protection, OWASP protection, EDR, MITRE
 
@@ -68,18 +68,18 @@ Keywords: AWS, IPS, IDS, HIPS, HIDS, Cloud, Intrusion Detection, Intrusion Preve
       set the scheduling according to linux_bash_command_history:time_window, in this example every 10 minutes
       */10 * * * * cd /path_to_CloudDog/ && /usr/bin/python3 cloudDog_Bash_Commands.py
 
-# 4) send logs to CloudWatch from monitored EC2s (CloudWatch Agent)
+# 4) Send logs to CloudWatch from monitored EC2s (CloudWatch Agent)
   - install cloud watch agent on linux EC2 to monitor (for automation is advised system manager).
     - Link to the guide to install cloud watch agent: https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/install-CloudWatch-Agent-commandline-fleet.html
     - logs to send are:
       - /var/log/auth.log
       - webserver access logs (for example /var/log/httpd-access.log)
       - ~/.bash_history
-    - set the log stream name as Instance ID
-    - note: to use properly the ~/.bash_history as intented from CloudDog it is necessary to insert PROMPT_COMMAND='history -a' in ~/.profile in all the monitored EC2
+    - set the log stream name as Instance ID, in case of an on prem device start the log stream name with i-
+    - note: to use properly the ~/.bash_history as intented from CloudDog it is necessary to insert PROMPT_COMMAND='history -a' in /etc/profile in all monitored Istances
     - remember to rotate logs 
 
-# 5) send alerts to CloudWatch from CloudDog
+# 5) Send alerts to CloudWatch from CloudDog
   - install cloud watch agent on linux EC2 to monitor (for automation is advised system manager).
     - Link to the guide to install cloud watch agent: https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/install-CloudWatch-Agent-commandline-fleet.html
     - logs to send are:
