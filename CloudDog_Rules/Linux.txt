@@ -1,3 +1,8 @@
+
+<!--
+  - mostly of the rules are from  https://github.com/SigmaHQ/sigma/tree/master/rules/linux plus there are some other
+  -  This program is a free software; you can redistribute it and/or modify it under the terms of GPLv2.
+-->
 Suspicius;;;wget .+  http.+ \| perl
 Suspicius;;;wget .+  http.+ \| sh
 Suspicius;;;wget .+  http.+ \| bash
