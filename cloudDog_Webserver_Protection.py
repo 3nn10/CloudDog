@@ -108,6 +108,7 @@ try:
                 if html_status_active:
                     treshold = configuration["apache_nginx_log"]["html_status"]["treshold"]
                     html_status_to_check = configuration["apache_nginx_log"]["html_status"]["html_status_to_check"]
+                    print (html_status_to_check)
                 else:
                     treshold=0
                     html_status_to_check =[]
@@ -151,9 +152,11 @@ try:
                     compRegole= re.compile("(.+?);;;(.+?);;;(.+?);;;(.+?)\n")
                     compRichiesta = re.compile("(\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}).+?\"(.*?) HTTP.+\s([0-9]{3})\s[0-9]{3}")
 
+                    print(cdr)
                     for log in response["events"]:
                         try:
                             richiesta=compRichiesta.search(log["message"])
+                            #print(log[1]["value"])
                             if richiesta:
                                 for rule in rules:
 
@@ -171,14 +174,18 @@ try:
                         except Exception as e:
                             print(e)
                             break
+                    print("noBlock finito")
                     if block:
                         Attacker_details=aggregated_Attacker_Detail()
+                        print(Attacker_details)
                         if block_treshold_operator == "and":
 
                             for attacker in Attacker_details:
                                 if attacker["nAttacks"] >= block_treshold_Total_Attacks and attacker["differentAttacks"]>= block_treshold_Different_Attack:
+                                    print("se po bucca?")
                                     blockIP=block_on_vpc(nacl_id,block_dedicated_nacl_RuleNumber_min,block_dedicated_nacl_RuleNumber_max,attacker["ip"],region,AlreadyBlocked)
                                     if blockIP:
+                                        print(attacker["ip"])
                                         AlreadyBlocked.append(attacker["ip"])
 
                         else:
@@ -186,6 +193,7 @@ try:
                                 if attacker["nAttacks"] >= block_treshold_Total_Attacks or attacker["differentAttacks"]>= block_treshold_Different_Attack:
                                     blockIP=block_on_vpc(nacl_id,block_dedicated_nacl_RuleNumber_min,block_dedicated_nacl_RuleNumber_max,attacker["ip"],region,AlreadyBlocked)
                                     if blockIP:
+                                        print(attacker["ip"])
                                         AlreadyBlocked.append(attacker["ip"])
 except Exception as e:
     logging.warning("service failed")

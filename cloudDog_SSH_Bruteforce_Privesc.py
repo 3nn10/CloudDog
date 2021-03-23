@@ -1,7 +1,7 @@
 ##################
 #Author:Ennio Calderoni
 ###################
-##CloudDog_SSH_Privesc
+##CloudDog_SSH_BruteForce_Privesc
 ## v1
 #This program is a free software; you can redistribute it and/or modify it under the terms of GPLv2.
 
@@ -15,6 +15,7 @@ import yaml
 import logging
 from cloudDog_CommonFunctions import block_on_vpc
 from cloudDog_CommonFunctions import ipInCidr
+#from cloudDog_CommonFunctions import emailSender
 from pid import PidFile
 logging.basicConfig(filename = os.path.join('logs/', 'cloudDog_SSH_Bruteforce_Privesc_Errors.log'), format='%(asctime)s %(message)s')
 
@@ -24,10 +25,11 @@ def correlator(logs,Blacklist,region,active_block,only_successeful,dedicated_nac
     SuccessfullBruteforce=[]
     Blacklist=Blacklist+Bruteforced
     failRegex="sshd\[[0-9]+\]:\sInvalid user.+?(\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3})|sshd\[[0-9]+\]:\sConnection closed by authenticating.+?(\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3})|sshd\[[0-9]+\]:\sFailed password for.+?(\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3})"
-    failSudoRegex="sudo:\s+(\S+) : user NOT in sudoers ;.+; COMMAND=(.+)"
+    failSudoRegex="sudo:\s+(\S+) : user NOT in sudoers ;.+; COMMAND=(.+)|.+authentication failure.+|.+incorrect\spassword.+"
     i=0
     SuccessBlocked=[]
     for log in logs:
+            #print (log)
             relog=re.search(failRegex,log["message"])
             Success=re.search("Accepted.+?(\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3})",log["message"])
             failSudo=re.search(failSudoRegex,log["message"])
@@ -80,22 +82,21 @@ def correlator(logs,Blacklist,region,active_block,only_successeful,dedicated_nac
                     ip=Success.group(1)
                     if ip in Blacklist:
                         #SuccessefullBruteforce.append(ip)
-                        with open('results/SuccessfullBruteforce.log', 'a') as SuccessefullBruteforce:
+                        with open('results/SuccessefullBruteforce.log', 'a') as SuccessefullBruteforce:
                             toPrint=region+" ; "+log["logStreamName"]+" ; "+ip+"\n"
                             SuccessefullBruteforce.write(toPrint)
+                            #emailSender(toPrint,"SuccessefullBruteforce")
                         if ip not in SuccessBlocked:
                             block_on_vpc(nacl_id,dedicated_nacl_RuleNumber_min,dedicated_nacl_RuleNumber_max,ip,region,[])
                             SuccessBlocked.append(ip)
-                            # with open('results/SSH_Bruteforce.log', 'a') as bruteforce:
-                            #     toPrint=region+" ; this IP has been blocked cause after a bruteforce attempt it made a successeful login ; "+ip+"\n"
-                            #     bruteforce.write(toPrint)
+
 
             elif failSudo:
-                    user=failSudo.group(1)
-                    command=failSudo.group(2)
-                    with open('results/FailedSudo.log', 'a') as FailedSudoText:
-                        toPrint=region+" ; "+log["logStreamName"]+" ; "+user+" ; sudo "+command+" ; Failed_Sudo"+"\n"
+                    command=failSudo.group(0)
+                    with open('results/PrivilegeEscalation.log', 'a') as FailedSudoText:
+                        toPrint=region+" ; "+log["logStreamName"]+" ; "+command+" \n"
                         FailedSudoText.write(toPrint)
+                        #emailSender(toPrint,"PrivilegeEscalation")
 
             i=i+1
 
@@ -135,6 +136,7 @@ try:
                     print(e)
                     continue
 
+                #print (response)
                 if os.path.exists('tools/ssh_blacklist.txt'):
                     with open('tools/ssh_blacklist.txt', 'r',errors='ignore') as file:
                                     Blacklist=Blacklist+file.read().splitlines()
