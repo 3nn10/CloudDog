@@ -81,7 +81,9 @@ Keywords: AWS, IPS, IDS, HIPS, HIDS, Cloud, Intrusion Detection, Intrusion Preve
 
 # 5) Send alerts to CloudWatch from CloudDog
   - install cloud watch agent on linux EC2 to monitor (for automation is advised system manager).
-    - Link to the guide to install cloud watch agent: https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/install-CloudWatch-Agent-commandline-fleet.html
+    - Useful links to install cloud watch agent:
+    	- https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/install-CloudWatch-Agent-commandline-fleet.html
+    	- https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/QuickStartEC2Instance.html
     - logs to send are:
       - /path_to_CloudDog/results/SSH_Bruteforce.log (information about IP that performed SSH BruteForce Attacks)
       - /path_to_CloudDog/results/Successfull_SSH_Bruteforce.log (information about IP that performed SSH BruteForce Attacks in the past and made a successeful login)
