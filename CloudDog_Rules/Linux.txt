@@ -1,0 +1,101 @@
+Suspicius;;;wget .+  http.+ \| perl
+Suspicius;;;wget .+  http.+ \| sh
+Suspicius;;;wget .+  http.+ \| bash
+Suspicius;;;python -m SimpleHTTPServer
+Suspicius;;;m http.server  # Python 3
+Suspicius;;;import pty; pty.spawn.+
+Suspicius;;;socat exec:.+
+Suspicius;;;socat O /tmp/.+
+Suspicius;;;socat tcpconnect.+
+Suspicius;;;.+echo binary >>.+
+Suspicius;;;^\s*wget\s+.+\|^\s*nc\s+.+\|^\s*netcat\s+.+\|^\s*curl\s+.+\|^\s*lynx\s+.+\|^\s*scp\s+.+\|^\s*ssh\s+.+\|^\s*ftp\s+.+\|^\s*sftp\s+.+\|^\s*telnet\s+.+\|^\s*nmap\s+.+\|^\s*rdesktop\s+.+\|^\s*tsclient\s+.+\|^\s*remmina\s+.+
+Malware;;;wget .+; chmod +x
+Malware;;;wget .+; chmod 777
+Malware;;;cd /tmp \|\| cd /var/run \|\| cd /mnt
+Apache_Struts_Exploit;;;stop;service iptables stop;
+Apache_Struts_Exploit;;;stop;SuSEfirewall2 stop;
+Apache_Struts_Exploit;;;chmod 777 2020
+Apache_Struts_Exploit;;;>>/etc/rc.local
+Metasploit;;;base64 -d /tmp/
+Metasploit;;;\| base64 -d
+Metasploit;;;/chmod -u+s
+Metasploit;;;chmod +s /tmp/
+Metasploit;;;chmod -u+s /tmp/
+Metasploit;;;/tmp/haxhax
+Metasploit;;;/tmp/ns_sploit
+Metasploit;;;^nc -l -p
+Metasploit;;;^cp /bin/ksh
+Metasploit;;;^cp /bin/sh
+Metasploit;;;/tmp/.+.b64
+Metasploit;;;/tmp/ysocereal.jar
+Metasploit;;;/tmp/x
+Metasploit;;;; chmod +x /tmp/
+Metasploit;;;;chmod +x /tmp/
+Metasploit;;;cat /etc/issue
+Metasploit;;;cat /etc/.+release
+Metasploit;;;cat /proc/version
+Metasploit;;;uname -a
+Metasploit;;;uname -mrs
+Metasploit;;;rpm -q kernel
+Metasploit;;;dmesg \| grep Linux
+Metasploit;;;ls /boot \| grep vmlinuz
+information_Gathering;;;cat /etc/profile
+information_Gathering;;;cat /etc/bashrc
+information_Gathering;;;cat ~/.bash_profile
+information_Gathering;;;cat ~/.bashrc
+information_Gathering;;;cat ~/.bash_logout
+information_Gathering;;;cat /etc/passwd
+information_Gathering;;;cat /etc/group
+information_Gathering;;;cat /etc/shadow
+sticky bits;;;find / perm u=s
+sticky bits;;;find / perm g=s
+sticky bits;;;find / perm 4000
+sticky bits;;;find / perm 2000
+sticky bits;;;BEGIN \{s = \"/inet/tcp/0/
+sticky bits;;;bash i >& /dev/tcp/
+sticky bits;;;bash i >& /dev/udp/
+sticky bits;;;sh i >$ /dev/udp/
+sticky bits;;;sh i >$ /dev/tcp/
+sticky bits;;;&& while read line 0<&5; do
+sticky bits;;;/bin/bash -c exec 5<>/dev/tcp/
+sticky bits;;;/bin/bash -c exec 5<>/dev/udp/
+sticky bits;;;^nc -e /bin/sh
+sticky bits;;;rm -f backpipe; mknod /tmp/backpipe -p && nc
+sticky bits;;;;socket\(S,PF_INET,SOCK_STREAM,getprotobyname\(\"tcp\"\)\);if\(connect\(S,sockaddr_in\($p,inet_aton\($i\)\)\)\)
+sticky bits;;;;STDIN>fdopen\($c,r\);$~>fdopen\($c,w\);system$_ while<>;
+sticky bits;;;/bin/sh i <&3 >&3 2>&3
+sticky bits;;;\$sendbyte = \(\[text.encoding\]::ASCII\).GetBytes\($sendback2\); $stream.Write\($sendbyte,0,$sendbyte.Length\); $stream.Flush\(\)\};
+sticky bits;;;\";os.dup2\(s.fileno\(\),0\);os.dup2\(s.fileno\(\),1\);os.dup2\(s.fileno\(\),2\);os.putenv\(HISTFILE,/dev/null\);\"
+sticky bits;;;.to_i;exec sprintf\(\"/bin/sh i <&%d >&%d 2>&%d\",f,f,f\)
+sticky bits;;;;while\(cmd=c.gets\);IO.popen\(cmd,\"r\"\)\{\|io\|c.print
+sticky bits;;;\"socat exec:bash li,pty,stderr,setsid,sigint,sane tcp:\"
+sticky bits;;;rm -f /tmp/p; mknod /tmp/p p &&
+sticky bits;;;\| /bin/bash \| telnet
+sticky bits;;;,echo=0,raw tcplisten:
+sticky bits;;;nc -lvvp
+sticky bits;;;xterm display 1
+auditcleaner;;;> /var/log/audit/audit.log; rm -f
+auditcleaner;;;cp /var/log/audit/audit.log .tmp
+reverse shell;;;sh >/dev/tcp/.+ <&1 2>&1
+reverse shell;;;nc .+ /bin/sh
+suspicius;;;ncat -vv -l -p .+ <
+suspicius;;;nc -vv -l -p .+ <
+Malware;;;< /dev/console \| uudecode && uncompress
+Malware;;;sendmail osendmail;chmod +x sendmail
+Malware;;;/usr/bin/wget O /tmp/a http.+ && chmod 755 /tmp/cron
+Malware;;;chmod 666 /var/run/utmp~
+Malware;;;chmod 700 nscd crond
+Malware;;;cp /etc/shadow /tmp/
+Malware;;;</dev/console \|uudecode > /dev/null 2>&1 && uncompress
+Malware;;;chmod 700 jp&&netstat an\|grep
+Suspicious;;;uudecode > /dev/null 2>&1 && uncompress f .+ && chmod 755
+Suspicious;;;chmod 700 crond
+Suspicious;;;wget http.+; chmod +x /tmp/sendmail
+Suspicious;;;chmod 700 -fp sendmail -pt
+Suspicious;;;chmod 755 /usr/vmsys/bin/pipe
+Suspicious;;;chmod R 755 /usr/vmsys
+Suspicious;;;chmod 755 $opbin/.+tunnel
+Suspicious;;;chmod 700 sendmail
+Suspicious;;;chmod 0700 sendmail
+Suspicious;;;/usr/bin/wget http.+sendmail;chmod +x sendmail;
+Suspicious;;;&& telnet .+ 2>&1 </dev/console
