@@ -72,9 +72,6 @@ def correlator(logs,Blacklist,region,active_block,only_successeful,dedicated_nac
                                                     blacklist.write(toPrint)
                                                     if active_block and not only_successeful:
                                                         block_on_vpc(nacl_id,dedicated_nacl_RuleNumber_min,dedicated_nacl_RuleNumber_max,ip,region,[])
-                                                        # with open('results/SSH_Bruteforce.log', 'a') as bruteforce:
-                                                        #     toPrint=region+" ; this IP has been blocked for bruteforce attempt ; "+ip+"\n"
-                                                        #     bruteforce.write(toPrint)
                                             break
                     else:
                          Checked.append(ip)
