@@ -99,7 +99,6 @@ try:
 
                                                     if domain_ip.group(1) and not domain_ip.group(2):
                                                             resolved_ip=socket.gethostbyname_ex(domain_ip.group(1))
-                                                            print("blocca dominiooo")
                                                             ipx=resolved_ip[2]
                                                             print(ipx)
                                                             for ip in ipx:
@@ -108,7 +107,7 @@ try:
                                                                 AlreadyBlocked.append(domain_ip.group(2))
 
                                                 except Exception as e:
-                                                    print("Blocco non riuscito")
+                                                    print("Block failure")
                                                     print(e)
                                                     continue
 
