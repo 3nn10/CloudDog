@@ -182,7 +182,6 @@ try:
 
                             for attacker in Attacker_details:
                                 if attacker["nAttacks"] >= block_treshold_Total_Attacks and attacker["differentAttacks"]>= block_treshold_Different_Attack:
-                                    print("se po bucca?")
                                     blockIP=block_on_vpc(nacl_id,block_dedicated_nacl_RuleNumber_min,block_dedicated_nacl_RuleNumber_max,attacker["ip"],region,AlreadyBlocked)
                                     if blockIP:
                                         print(attacker["ip"])
